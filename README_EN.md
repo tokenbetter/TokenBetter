@@ -34,7 +34,7 @@ TokenBetter trading platform official API documentation
 <!-- /TOC -->
 # Introduction 
 Welcome to use [TokenBetter][]developer documentation.
-This document provides an introduction of 1strade crypto-crypto trading service API usage methods such as market inquiry, trading, and account management .
+This document provides an introduction of TokenBetter crypto-crypto trading service API usage methods such as market inquiry, trading, and account management .
 The market API is a public interface that provides market data of the crypto trading market; the trading and account API require identity authentication for functions such as order placing, order cancellation and account information query .
 # Start to use
 REST，the abbreviation of Representational State Transfer，is a kind of popular  internet transfer architecture featured with clear and standard structure ,scalablity and easy operation .The advantages are as follows: 
@@ -44,7 +44,7 @@ REST，the abbreviation of Representational State Transfer，is a kind of popula
 Developers are advised to use the REST API for market queries, crypto trading, and account management,etc.
 # API interface encryption verification
 ## Generate API KEY
-Before signing any request, you must generate  an API KEY via the 1strade website [User Center] - [API]. After generating the API KEY, you will get 3 pieces of information that you must remember:
+Before signing any request, you must generate  an API KEY via the TokenBetter website [User Center] - [API]. After generating the API KEY, you will get 3 pieces of information that you must remember:
 * API Key
 * Secret Key
 * Passphrase
