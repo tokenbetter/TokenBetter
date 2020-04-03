@@ -6,7 +6,7 @@ import urllib.parse
 
 import requests
 
-TOKENBETTER = 'https://bn.bineng.com'
+TOKENBETTER = 'https://***.***.com'
 
 
 class Tokenbetter:
