@@ -1,6 +1,5 @@
 TokenBetter trading platform official API documentation
 ==================================================
-[TokenBetter][] Trading platform developer documentation([简体中文文档][])。
 <!-- TOC -->
 - [Introduction ](#Introduction )
 - [Start to use ](#Start-to-use)
