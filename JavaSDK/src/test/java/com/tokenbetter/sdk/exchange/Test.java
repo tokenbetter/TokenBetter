@@ -10,10 +10,10 @@ import com.alibaba.fastjson.JSON;
 public class Test {
     public static void main(String args[]) throws Exception {
         ClientParameter parameter = ClientParameter.builder()
-                .apiKey("....")
-                .secretKey("...")
-                .passphrase("123456")
-                .baseUrl("")
+                .apiKey("8c25b7******f958d591")
+                .secretKey("7270********be04eb13a3e5bd9f1f3")
+                .passphrase("1*****6")
+                .baseUrl("https://www.*****.com")
                 .build();
 
         AccountService accountService = PrivateApiClient.builder()
@@ -30,7 +30,7 @@ public class Test {
 
 
 
-        System.out.println(JSON.toJSONString(publicService.fills("BTC_USDT",null)));
+        System.out.println(JSON.toJSONString(accountService.assetsList()));
 
     }
 }
