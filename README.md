@@ -282,7 +282,7 @@ HTTP状态码200表示成功响应，并可能包含内容。如果响应含有�
 |------|----|:---:|:---:|
 |pairCode|String|是|币对，如ETH_BTC|
 
-### 4. 获取币对历史成交记录
+### 4. 最新成交记录
 **请求**
 ```http
     # Request
@@ -634,7 +634,7 @@ HTTP状态码200表示成功响应，并可能包含内容。如果响应含有�
 |type|Integer|否|RECHARGE(1),WITHDRAW(2),BUY(7),SELL(8),TRANSFER_IN(43),TRANSFER_OUT(44),SERVICE_FEE_BUY(88),SERVICE_FEE_SELL(89)|
 |isHistory|Boolean|否|是否历史数据|
 
-### 7. 获取个人币对历史成交记录，支持分页查询
+### 7. 个人成交记录，支持分页查询
 获取所请求交易对的历史成交信息，该请求支持分页。
 **请求**
 ```http
