@@ -31,6 +31,7 @@ TokenBetter交易平台官方API文档
         - [4. 按订单撤销委托](#4-按订单撤销委托)
         - [5. 查询所有订单](#5-查询所有订单)
         - [6. 获取账单](#6-获取账单)
+        - [7. 获取个人币对历史成交记录](#7-获取个人币对历史成交记录)
 <!-- /TOC -->
 # 介绍
 欢迎使用[TokenBetter][]开发者文档。
@@ -280,87 +281,37 @@ HTTP状态码200表示成功响应，并可能包含内容。如果响应含有�
 |参数名|参数类型|必填|描述|
 |------|----|:---:|:---:|
 |pairCode|String|是|币对，如ETH_BTC|
-    
-### 4. 获取币对历史成交记录，支持分页查询
-获取所请求交易对的历史成交信息，该请求支持分页。
+
+### 4. 获取币对历史成交记录
 **请求**
 ```http
     # Request
-    GET /openapi/exchange/{pairCode}/fulfillment
+    GET /openapi/exchange/public/{pairCode}/fills
 ```
 **响应**
+    
 ```javascript
     # Response
-    [
-        [
-            	"id": 1524801032573,
-				"pairCode": "BTC_USDT",
-				"userId": 1001,		
-				"brokerId": 10000,		
-				"side": "buy",
-				"entrustPrice": "1",
-				"amount": "1",
-				"dealAmount": "1",
-				"quoteAmount": "1",
-				"dealQuoteAmount": "1",
-				"systemOrderType": "limit",
-				"status": 0,
-				"sourceInfo": "web",
-				"createOn": 1524801032573,
-				"updateOn": 1524801032573,
-				"symbol": "BTC",
-				"trunOver": "1",
-				"notStrike": "0",
-				"averagePrice": "1",
-				"openAmount": "1"
-        ],
+    {
+        ["9581.4","0.091084","sell",1590897543720]
         ...
-    ]
+    }
 ```
-**返回值说明**
+**返回值说明（按顺序）**
 
 |返回字段|字段说明|
-|--------|----|
-| id |订单id|
-| pairCode |是Base和quote之间的组合 BTC_USD|
-| userId |用户id|
-| brokerId |券商id|
-| side |方向 买、卖|
-| entrustPrice |下单价格|
-| amount |下单数量|
-| dealAmount |成交数量|
-| quoteAmount |基准币数量  只有在市价买的情况下会用到|
-| dealQuoteAmount |基准币已成交数量|
-| systemOrderType |10:限价 11:市价|
-| status |0:未成交 1:部分成交 2:完全成交 3:撤单中 -1:已撤单|
-| sourceInfo |下单来源 web,api,Ios,android|
-| createOn |创建时间|
-| updateOn |修改时间|
-| symbol |币种|
-| trunOver |成交金额  dealQuoteAmount * dealAmount|
-| notStrike |尚未成交的数量|
-| averagePrice |平均成交价|
-| openAmount |下单数量|
+|-----|----|
+|9581.4|成交价|
+|0.091084|数量|
+|sell|买卖方向|
+|1590897543720|时间|
 
 **请求参数**
-
+    
 |参数名|参数类型|必填|描述|
-|-----|:---:|----|----|
-|pairCode|String|是|币对，如LTC_BTC|
-|startDate|Long|否|开始时间，如1524801032573|
-|endDate|Long|否|结束时间，如1524801032573|
-|systemOrderType|Integer|否|10:限价 11:市价|
-|price|BigDecimal|否|价格|
-|amount|BigDecimal|否|数量|
-|source|String|否|币对，如LTC_BTCweb,api,Ios,android|
-|isHistory|Boolean|否|是否查历史数据、一周前成交的数据是历史数据、默认false|
-|page|Integer|否|第几页|
-|pageSize|Integer|否|每页条数|
-
-**解释说明**
-+ 交易方向 side 表示每一笔成交订单中 maker 下单方向,maker 是指将订单挂在订单深度列表上的交易用户，即被动成交方。
-+ buy 代表行情下跌，因为 maker 是买单，maker 的买单被成交，所以价格下跌；相反的情况下，sell代表行情上涨，因为此时maker是卖单，卖单被成交，表示上涨。
-
+|-----|----|----|----|
+|pairCode|String|是|币对如btc_usdt|
+   
 ### 5. 获取K线数据
 **请求**
 ```http
@@ -682,3 +633,83 @@ HTTP状态码200表示成功响应，并可能包含内容。如果响应含有�
 |symbol|String|否|币种 如BTC|
 |type|Integer|否|RECHARGE(1),WITHDRAW(2),BUY(7),SELL(8),TRANSFER_IN(43),TRANSFER_OUT(44),SERVICE_FEE_BUY(88),SERVICE_FEE_SELL(89)|
 |isHistory|Boolean|否|是否历史数据|
+
+### 7. 获取个人币对历史成交记录，支持分页查询
+获取所请求交易对的历史成交信息，该请求支持分页。
+**请求**
+```http
+    # Request
+    GET /openapi/exchange/{pairCode}/fulfillment
+```
+**响应**
+```javascript
+    # Response
+    [
+        [
+            	"id": 1524801032573,
+				"pairCode": "BTC_USDT",
+				"userId": 1001,		
+				"brokerId": 10000,		
+				"side": "buy",
+				"entrustPrice": "1",
+				"amount": "1",
+				"dealAmount": "1",
+				"quoteAmount": "1",
+				"dealQuoteAmount": "1",
+				"systemOrderType": "limit",
+				"status": 0,
+				"sourceInfo": "web",
+				"createOn": 1524801032573,
+				"updateOn": 1524801032573,
+				"symbol": "BTC",
+				"trunOver": "1",
+				"notStrike": "0",
+				"averagePrice": "1",
+				"openAmount": "1"
+        ],
+        ...
+    ]
+```
+**返回值说明**
+
+|返回字段|字段说明|
+|--------|----|
+| id |订单id|
+| pairCode |是Base和quote之间的组合 BTC_USD|
+| userId |用户id|
+| brokerId |券商id|
+| side |方向 买、卖|
+| entrustPrice |下单价格|
+| amount |下单数量|
+| dealAmount |成交数量|
+| quoteAmount |基准币数量  只有在市价买的情况下会用到|
+| dealQuoteAmount |基准币已成交数量|
+| systemOrderType |10:限价 11:市价|
+| status |0:未成交 1:部分成交 2:完全成交 3:撤单中 -1:已撤单|
+| sourceInfo |下单来源 web,api,Ios,android|
+| createOn |创建时间|
+| updateOn |修改时间|
+| symbol |币种|
+| trunOver |成交金额  dealQuoteAmount * dealAmount|
+| notStrike |尚未成交的数量|
+| averagePrice |平均成交价|
+| openAmount |下单数量|
+
+**请求参数**
+
+|参数名|参数类型|必填|描述|
+|-----|:---:|----|----|
+|pairCode|String|是|币对，如LTC_BTC|
+|startDate|Long|否|开始时间，如1524801032573|
+|endDate|Long|否|结束时间，如1524801032573|
+|systemOrderType|Integer|否|10:限价 11:市价|
+|price|BigDecimal|否|价格|
+|amount|BigDecimal|否|数量|
+|source|String|否|币对，如LTC_BTCweb,api,Ios,android|
+|isHistory|Boolean|否|是否查历史数据、一周前成交的数据是历史数据、默认false|
+|page|Integer|否|第几页|
+|pageSize|Integer|否|每页条数|
+
+**解释说明**
++ 交易方向 side 表示每一笔成交订单中 maker 下单方向,maker 是指将订单挂在订单深度列表上的交易用户，即被动成交方。
++ buy 代表行情下跌，因为 maker 是买单，maker 的买单被成交，所以价格下跌；相反的情况下，sell代表行情上涨，因为此时maker是卖单，卖单被成交，表示上涨。
